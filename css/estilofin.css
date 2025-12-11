@@ -1,3 +1,7 @@
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         h1.titulo-final {
             text-align: center;
             color: #ff3333; /* Rojo brillante */
