@@ -113,6 +113,10 @@
     <audio id="audio-incorrecto" src="sounds/hohoho.mp3" preload="auto"></audio>
 
     <script>
+        if (localStorage.getItem("principales_superado") !== "yes") {
+            window.location.href = "principales.html";
+        }
+        
         // LÓGICA DE ESTRELLAS, NIEVE Y LUCES
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 100; i++) {
