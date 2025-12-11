@@ -145,6 +145,22 @@
             light2.className = 'light';
             lightsBottomContainer.appendChild(light2);
         }
+
+        // --- LÓGICA COOKIE CLICKER MINIMALISTA ---
+        let score = 0;
+        const scoreEl = document.getElementById('score');
+        const cookieBtn = document.getElementById('cookie-btn');
+
+        cookieBtn.addEventListener('click', () => {
+            score += 1;
+            scoreEl.textContent = score;
+            
+            // Opcional: Pequeña animación extra en el texto al subir puntos
+            scoreEl.style.transform = "scale(1.2)";
+            setTimeout(() => {
+                scoreEl.style.transform = "scale(1)";
+            }, 100);
+        });
     </script>
 </body>
 </html>
