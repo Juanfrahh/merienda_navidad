@@ -1,3 +1,7 @@
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
 /* Estilos Minimalistas del Clicker */
         .clicker-container {
             margin-top: 50px;
