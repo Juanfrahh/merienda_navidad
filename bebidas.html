@@ -169,6 +169,10 @@
     </div>
 
     <script>
+        if (localStorage.getItem("postres_superado") !== "yes") {
+            window.location.href = "postres.html";
+        }
+        
         // ESTRELLAS
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 100; i++) {
@@ -293,8 +297,12 @@
             }
 
             if (seleccionada === respuestaCorrecta) {
-                if (esUltima) mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el menú de bebidas navideñas!', platoId, div_desaparece, div_aparece);
-                else mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado una bebida navideña!', platoId, div_desaparece, div_aparece);
+                if (esUltima) {
+                    mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el menú de bebidas navideñas!', platoId, div_desaparece, div_aparece);
+                    localStorage.setItem("bebidas_superado", "yes");
+                } else {
+                    mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado una bebida navideña!', platoId, div_desaparece, div_aparece);
+                }
             } else {
                 mostrarModal('incorrecto', '¡Respuesta Incorrecta! ❌', 'Vuelve a intentarlo. ¡Tú puedes!');
             }
