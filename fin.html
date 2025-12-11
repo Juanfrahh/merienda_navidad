@@ -117,6 +117,10 @@
     </div>
 
     <script>
+        if (localStorage.getItem("bebidas_superado") !== "yes") {
+            window.location.href = "bebidas.html";
+        }
+        
         // Estrellas
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 100; i++) {
