@@ -260,6 +260,7 @@
                 if (modalData.platoId) document.getElementById(modalData.platoId).classList.add('desbloqueado');
                 if (modalData.div_desaparece) document.getElementById(modalData.div_desaparece).style.display = "none";
                 if (modalData.div_aparece) document.getElementById(modalData.div_aparece).style.display = "block";
+                centrarPregunta(modalData.div_aparece);
                 modalData = { platoId: null, div_desaparece: null, div_aparece: null };
             }
             overlay.style.display = 'none';
@@ -298,6 +299,28 @@
                 mostrarModal('incorrecto', '¡Respuesta Incorrecta! ❌', 'Vuelve a intentarlo. ¡Tú puedes!');
             }
         }
+
+        function centrarPregunta(idPregunta) {
+            const elemento = document.getElementById(idPregunta);
+            if (elemento) {
+                const rect = elemento.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const elementoCentro = rect.top + scrollTop - (window.innerHeight / 2) + (rect.height / 2);
+
+                window.scrollTo({
+                    top: elementoCentro,
+                    behavior: 'smooth'
+                });
+
+                window.addEventListener('load', () => {
+                    centrarPregunta('div_p1');
+                });
+            }
+        }
+
+        window.addEventListener('load', () => {
+            centrarPregunta('div_p1');
+        });
     </script>
 </body>
 </html>
