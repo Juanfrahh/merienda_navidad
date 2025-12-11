@@ -353,6 +353,7 @@
             if (seleccionada === respuestaCorrecta) {
                 if (esUltima) {
                     mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el primer menú de entrantes navideños!', platoId, div_desaparece, div_aparece);
+                    localStorage.setItem("entrantes_superado", "yes");
                 } else {
                     mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado un plato navideño!', platoId, div_desaparece, div_aparece);
                 }
