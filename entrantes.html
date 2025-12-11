@@ -281,6 +281,7 @@
                 }
                 if (modalData.div_aparece) {
                     document.getElementById(modalData.div_aparece).style.display = "block";
+                    centrarPregunta(modalData.div_aparece);
                 }
                 
                 // Resetear los datos
@@ -359,6 +360,28 @@
                 mostrarModal('incorrecto', '¡Respuesta Incorrecta! ❌', 'Vuelve a intentarlo. ¡Tú puedes!');
             }
         }
+
+        function centrarPregunta(idPregunta) {
+            const elemento = document.getElementById(idPregunta);
+            if (elemento) {
+                const rect = elemento.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const elementoCentro = rect.top + scrollTop - (window.innerHeight / 2) + (rect.height / 2);
+
+                window.scrollTo({
+                    top: elementoCentro,
+                    behavior: 'smooth'
+                });
+
+                window.addEventListener('load', () => {
+                    centrarPregunta('div_p1');
+                });
+            }
+        }
+
+        window.addEventListener('load', () => {
+            centrarPregunta('div_p1');
+        });
     </script>
 </body>
 </html>
