@@ -234,8 +234,12 @@
             }
 
             if (seleccionada === respuestaCorrecta) {
-                if (esUltima) mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el menú de postres navideños!', platoId, div_desaparece, div_aparece);
-                else mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado un postre navideño!', platoId, div_desaparece, div_aparece);
+                if (esUltima) {
+                    mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el menú de postres navideños!', platoId, div_desaparece, div_aparece);
+                    localStorage.setItem("postres_superado", "yes");
+                } else {
+                    mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado un postre navideño!', platoId, div_desaparece, div_aparece);
+                }
             } else {
                 mostrarModal('incorrecto', '¡Respuesta Incorrecta! ❌', 'Vuelve a intentarlo. ¡Tú puedes!');
             }
