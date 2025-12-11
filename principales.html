@@ -147,6 +147,10 @@
     <audio id="audio-incorrecto" src="sounds/hohoho.mp3" preload="auto"></audio>
 
     <script>
+        if (localStorage.getItem("entrantes_superado") !== "yes") {
+            window.location.href = "entrantes.html";
+        }
+        
         // LÓGICA DE ESTRELLAS, NIEVE Y LUCES
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 100; i++) {
@@ -271,8 +275,13 @@
             }
 
             if (seleccionada === respuestaCorrecta) {
-                if (esUltima) mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el menú de platos principales navideños!', platoId, div_desaparece, div_aparece);
-                else mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado un plato principal navideño!', platoId, div_desaparece, div_aparece);
+                if (esUltima) {
+                    mostrarModal('completado', '🎊 ¡Felicidades! 🎊', '¡Has completado el menú de platos principales navideños!', platoId, div_desaparece, div_aparece);
+                    localStorage.setItem("principales_superado", "yes");   // ← AÑADIDO AQUÍ
+                }
+                else {
+                    mostrarModal('correcto', '¡Respuesta Correcta! 🎉', '¡Has desbloqueado un plato navideño!', platoId, div_desaparece, div_aparece);
+                }
             } else {
                 mostrarModal('incorrecto', '¡Respuesta Incorrecta! ❌', 'Vuelve a intentarlo. ¡Tú puedes!');
             }
